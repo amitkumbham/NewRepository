@@ -10,8 +10,7 @@ public class HelloWorld {
         System.out.println("First commit");
         System.out.println("second commit");
         System.out.println("cdfd");
-        System.out.println("last updated");
-        System.out.println("last updated new ");
+       
         
 	}
 
