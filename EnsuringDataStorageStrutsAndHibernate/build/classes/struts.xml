@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="Resources.application" />
+
+	<package name="default" extends="struts-default" namespace="/">
+		<action name="login" class="com.itp.action1.Login">
+			<result name="success">Welcome.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<action name="upload1" class="com.itp.action1.Login" method="display">
+			<result name="none">upload.jsp</result>
+		</action>
+
+		<action name="doUpload" class="com.itp.action1.Login" method="upload1">
+			<interceptor-ref name="exception" />
+			<interceptor-ref name="i18n" />
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">text/plain</param>
+				<param name="maximumSize">10240</param>
+			</interceptor-ref>
+			<interceptor-ref name="params">
+				<param name="excludeParams">dojo\..*,^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="validation">
+				<param name="excludeMethods">input,back,cancel,browse</param>
+			</interceptor-ref>
+			<interceptor-ref name="workflow">
+				<param name="excludeMethods">input,back,cancel,browse</param>
+			</interceptor-ref>
+
+			<result name="success">result.jsp</result>
+			<result name="input">upload.jsp</result>
+		</action>
+		<action name="download1">
+			<result name="success">downloadFile.jsp</result>
+		</action>
+
+		<action name="download" class="com.itp.action1.Login" method="execute1">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">fileInputStream</param>
+				<param name="contentDisposition">attachment;filename="fileABC.txt"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+
+		<action name="registration" class="com.itp.action1.Registration">
+			<result name="success">registration.jsp</result>
+		</action>
+		
+		<action name="userRegistration" class="com.itp.action1.Registration" method="userRegistration">
+			<result name="success">index.jsp</result>
+			<result name="error">registration.jsp</result>
+		</action>
+		<action name="active" class="com.itp.action1.activeservers" method="active">
+			<result name="success">index.jsp</result>
+			<result name="error">registration.jsp</result>
+		</action>
+	</package>
+</struts>

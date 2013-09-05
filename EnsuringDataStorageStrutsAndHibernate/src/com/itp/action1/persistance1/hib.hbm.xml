@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.itp.action1.persistance1.LoginBean" table="login">
+		<id name="username" column="username" />
+        <property name="password" column="password" />
+</class>
+
+
+<class name="com.itp.action1.persistance1.RegistrationBean" table="registration">
+	<id name="id" column="id">
+<generator class="increment" />
+</id>
+
+	
+     <property
+        name="username"
+        type="string"
+        column="username"
+        length="256"
+    /> 
+    <property
+        name="password"
+        type="string"
+        column="password"
+        length="256"
+    />
+    <property
+        name="emailid"
+        type="string"
+        column="email_id"
+        length="256"
+    />
+    <property
+        name="phonenumber"
+        type="string"
+        column="phone_number"
+        length="256"
+    />
+    <property
+        name="securityquestion"
+        type="string"
+        column="securityquestion"
+        length="256"
+    />
+    <property
+        name="securityanswer"
+        type="string"
+        column="securityanswer"
+        length="256"
+    />
+    
+    <property
+        name="usertype"
+        type="string"
+        column="usertype"
+        length="256"
+    />
+    
+</class>
+		
+</hibernate-mapping>
